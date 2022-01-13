@@ -19,11 +19,21 @@
         </Expand>
     </Type>
 
-    <Type Name="gsl::span&lt;*, *&gt;">
-        <DisplayString>{{ extent = {storage_.size_} }}</DisplayString>
+    <Type Name="gsl::span&lt;*, -1&gt;">
+        <DisplayString>{{ extent = {*(size_t*)(&amp;storage_)} }}</DisplayString>
         <Expand>
             <ArrayItems>
-                <Size>storage_.size_</Size>
+                <Size>*(size_t*)(&amp;storage_)</Size>
+                <ValuePointer>storage_.data_</ValuePointer>
+            </ArrayItems>
+        </Expand>
+    </Type>
+
+    <Type Name="gsl::span&lt;*, *&gt;">
+        <DisplayString>{{ extent = {$T2} }}</DisplayString>
+        <Expand>
+            <ArrayItems>
+                <Size>$T2</Size>
                 <ValuePointer>storage_.data_</ValuePointer>
             </ArrayItems>
         </Expand>
